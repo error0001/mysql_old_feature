@@ -1,4 +1,21 @@
 <?php
+
+/**
+* Оптимизация
+- Избегать а лучше не выполнять запросы в цикле.
+- Пытаться делать меньшее кол-во запросов в базу.
+*/
+//Вставки
+
+// INSERT
+$log = parse_log();
+while($record = next($log))
+query('INSERT INTO logs SET value = '. $log['value']);
+// Проще
+// INSERT INTO logs (value) VALUES (...), (...)
+
+
+
 /**
  * Факты:
  - TIMESTAMP совпадает с DATETIME,
