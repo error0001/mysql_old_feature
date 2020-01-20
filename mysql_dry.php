@@ -1,4 +1,7 @@
 <?php
+
+// 1. Добавить строку
+
 // CREATE TABLE goods (
 //  id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 //    name VARCHAR(255),
