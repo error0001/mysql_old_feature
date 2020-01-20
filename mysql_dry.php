@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Работа с с таблицами.
+*/
 // 1. Добавить строку
 
 // CREATE TABLE goods (
@@ -43,4 +46,44 @@ $sql = "
 // WHERE id = 5
 //   AND name = 'O\'Reilly'
 
+/**
+ * Обработка с исключениями и ошибками.
+ */
+
+// 1. connection
+// Попытка установить соединение с MySQL:
+if (!mysql_connect($server, $user, $ password)) {
+        echo "Ошибка подключения к серверу MySQL";
+        // echo "ERROR ".mysql_errno()." ".mysql_error()."\n"; // Детальный осмотр ошибок
+        exit;
+}
+// Соединились, теперь выбираем базу данных:
+mysql_select_db($db);
+
+/** 
+Обработка запроса.
+mysql_result() - получить необходимый элемент из набора записей;
+mysql_fetch_array() - занести запись в массив;
+mysql_fetch_row() - занести запись в массив;
+mysql_fetch_assoc() - занести запись в ассоциативный массив;
+mysql_fetch_object() - занести запись в объект.
+*/     
+$q = mysql_query("SELECT * FROM mytable");
+echo "В таблице mytable ".mysql_num_rows($q)." записей";
+
+$q = mysql_query("SELECT * FROM mytable");
+echo "В таблице mytable ".mysql_num_fields($q)." полей ";
+        
+
+/**
+ * Работа с кодировками
+ */
+//Листинг № 1. Оператор CREATE TABLE для создания таблицы test
+
+$query = "CREATE TABLE test (
+  dos_name TEXT CHARACTER SET cp866 COMMENT `Кодировка DOS`,
+  win_name TEXT CHARACTER SET cp1251 COMMENT `Кодировка Windows`,
+  koi8r_name TEXT CHARACTER SET koi8r COMMENT `Кодировка KOI8-R`,
+  utf8_name TEXT CHARACTER SET utf8 COMMENT `Юникод`
+)";
 ?>
