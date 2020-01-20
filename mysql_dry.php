@@ -57,6 +57,7 @@ if (!mysql_connect($server, $user, $ password)) {
         // echo "ERROR ".mysql_errno()." ".mysql_error()."\n"; // Детальный осмотр ошибок
         exit;
 }
+@mysql_query ("SET NAMES 'cp1251'");    // руский текст будет появляться не понятными знаками
 // Соединились, теперь выбираем базу данных:
 mysql_select_db($db);
 
