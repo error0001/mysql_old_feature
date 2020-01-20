@@ -14,7 +14,15 @@ query('INSERT INTO logs SET value = '. $log['value']);
 // Проще
 // INSERT INTO logs (value) VALUES (...), (...)
 
-
+// UPDATE
+// if use
+UPDATE news SET title='test' WHERE id IN (1, 2, 3)
+// =>
+UPDATE news SET
+title = CASE
+WHEN news_id = 1 THEN 'aa'
+WHEN news_id = 2 THEN 'bb' END
+WHERE news_id IN (1, 2)
 
 /**
  * Факты:
