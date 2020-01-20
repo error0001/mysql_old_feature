@@ -78,7 +78,7 @@ echo "В таблице mytable ".mysql_num_fields($q)." полей ";
 /**
  * Работа с кодировками
  */
-//Листинг № 1. Оператор CREATE TABLE для создания таблицы test
+//. Оператор CREATE TABLE для создания таблицы test
 
 $query = "CREATE TABLE test (
   dos_name TEXT CHARACTER SET cp866 COMMENT `Кодировка DOS`,
@@ -86,4 +86,12 @@ $query = "CREATE TABLE test (
   koi8r_name TEXT CHARACTER SET koi8r COMMENT `Кодировка KOI8-R`,
   utf8_name TEXT CHARACTER SET utf8 COMMENT `Юникод`
 )";
+
+//  Создание таблицы, для хранения русского текста в кодировке cp1251
+
+$query = "CREATE TABLE catalogs (
+  id_catalog INT(11) NOT NULL,
+  name TINYTEXT NOT NULL
+) ENGINE=MyISAM CHARACTER SET cp1251";
+
 ?>
